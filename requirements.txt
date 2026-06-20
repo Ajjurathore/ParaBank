@@ -1,8 +1,29 @@
-robotframework==7.4.2
-robotframework-seleniumlibrary==6.8.0
-robotframework-pabot==5.2.2
-robotframework-datadriver[XLS]==1.11.2
-selenium==4.24.0
-webdriver-manager==4.0.2
-python-dotenv==1.2.1
-PyYAML==6.0.3
+# Core Robot Framework
+robotframework>=7.0
+
+# Selenium support
+robotframework-seleniumlibrary>=6.0
+selenium>=4.20.0
+
+# HTTP/API testing
+robotframework-requests>=0.9.7
+requests>=2.31.0
+
+# Data handling
+openpyxl>=3.1.2
+pandas>=2.2.2
+
+# Environment variable management
+python-dotenv>=1.0.1
+
+# WebDriver management (optional but useful)
+webdriver-manager>=4.0.2
+
+# Robot Framework reporting and utilities
+robotframework-pythonlibcore>=4.4.1
+
+robotframework-pabot>=4.0
+
+allure-robotframework>=2.13.5
+
+robotframework-metrics>=3.7.0
