@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.0 on win32)" generated="2026-06-20T12:58:55.897025" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\azads\OneDrive\Desktop\project\tests">
+<suite id="s1-s1" name="API" source="C:\Users\azads\OneDrive\Desktop\project\tests\API">
+<suite id="s1-s1-s1" name="Negative" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Negative">
+<suite id="s1-s1-s1-s1" name="TC-PERF-04" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Negative\TC-PERF-04.robot">
+<test id="s1-s1-s1-s1-t1" name="TC-PERF_04" line="5">
+<kw name="Invalid Customer ID Response Time" owner="api_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-06-20T12:58:56.623849" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-06-20T12:58:56.622849" elapsed="0.001095"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:58:56.626826" level="INFO">Creating Session using : alias=bankApi, url=https://parabank.parasoft.com/parabank/services/bank, headers={'Accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>bankApi</arg>
+<arg>${API_BASE_URL}</arg>
+<arg>verify=True</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-06-20T12:58:56.625949" elapsed="0.001382"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-20T12:58:56.630926" level="INFO">${start} = 1781940536.630765</msg>
+<var>${start}</var>
+<arg>time.time()</arg>
+<arg>modules=time</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-20T12:58:56.629657" elapsed="0.001350"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:58:58.489084" level="INFO">GET Request : url=https://parabank.parasoft.com/parabank/services/bank/customers/9999999/accounts 
+ path_url=/parabank/services/bank/customers/9999999/accounts 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': 'application/json', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-06-20T12:58:58.489411" level="INFO">GET Response : url=https://parabank.parasoft.com/parabank/services/bank/customers/9999999/accounts 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Sat, 20 Jun 2026 07:28:58 GMT', 'Content-Type': 'text/plain;charset=UTF-8', 'Content-Length': '32', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'cf-cache-status': 'DYNAMIC', 'X-Content-Type-Options': 'nosniff', 'CF-RAY': 'a0e90f4b4d183226-BOM'} 
+ body=Could not find customer #9999999 
+ </msg>
+<msg time="2026-06-20T12:58:58.489722" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>bankApi</arg>
+<arg>/customers/9999999/accounts</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-06-20T12:58:56.633238" elapsed="1.856556"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-20T12:58:58.493732" level="INFO">${end} = 1781940538.493524</msg>
+<var>${end}</var>
+<arg>time.time()</arg>
+<arg>modules=time</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-20T12:58:58.492355" elapsed="0.001501"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-20T12:58:58.497888" level="INFO">${responseTimeMs} = 1862.7591133117676</msg>
+<var>${responseTimeMs}</var>
+<arg>(${end}-${start})*1000</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-20T12:58:58.496579" elapsed="0.001432"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response Time: ${responseTimeMs} ms</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-06-20T12:58:58.500347" elapsed="0.000951"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-06-20T12:58:58.503538" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-20T12:58:58.501891" elapsed="0.001781"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${responseTimeMs} &lt; 4000</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-06-20T12:58:58.505919" elapsed="0.001052"/>
+</kw>
+<tag>@api</tag>
+<tag>@negative</tag>
+<tag>@performance</tag>
+<doc>Verify invalid customer request completes within 2 seconds</doc>
+<status status="PASS" start="2026-06-20T12:58:56.621606" elapsed="1.885951"/>
+</kw>
+<doc>Verify invalid customer request completes within 2 seconds</doc>
+<tag>@performance @api @negative</tag>
+<status status="PASS" start="2026-06-20T12:58:56.619955" elapsed="1.888170"/>
+</test>
+<status status="PASS" start="2026-06-20T12:58:56.116475" elapsed="2.393500"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:58:56.114177" elapsed="2.400586"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:58:56.111648" elapsed="2.404443"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:58:56.064331" elapsed="2.452958"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">@performance @api @negative</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="API" id="s1-s1" pass="1" fail="0" skip="0">Tests.API</stat>
+<stat name="Negative" id="s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Negative</stat>
+<stat name="TC-PERF-04" id="s1-s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Negative.TC-PERF-04</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

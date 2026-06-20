@@ -1,0 +1,34 @@
+datasources:4d54c850b5818f289497e4269b90db58094ed180
+commandlineoptions:5ea3922db11a42de3fa4c89e9d9f06972f891d9e
+suitesfrom:no-suites-from-option
+file:375aa12a8af1d35aef6c9110d2401b7c5c69b863
+--suite Tests.API.Negative.TC-API-ACC-02
+--suite Tests.API.Negative.TC-API-ACC-07
+--suite Tests.API.Negative.TC-API-LGN-02
+--suite Tests.API.Negative.TC-API-LGN-03
+--suite Tests.API.Negative.TC-API-LGN-04
+--suite Tests.API.Negative.TC-PERF-04
+--suite Tests.API.Negative.TC-PERF-05
+--suite Tests.API.Positive.TC-API-ACC-01
+--suite Tests.API.Positive.TC-API-ACC-06
+--suite Tests.API.Positive.TC-API-CUST-01
+--suite Tests.API.Positive.TC-API-LGN-01
+--suite Tests.API.Positive.TC-PERF-01
+--suite Tests.API.Positive.TC-PERF-02
+--suite Tests.API.Positive.TC-PERF-03
+--suite Tests.Hybrid.TC-E2E-01
+--suite Tests.Hybrid.TC-E2E-02
+--suite Tests.Hybrid.TC-E2E-03
+--suite Tests.UI.Negative.TC-UI-LGN-02
+--suite Tests.UI.Negative.TC-UI-LGN-05
+--suite Tests.UI.Negative.TC-UI-REG-02
+--suite Tests.UI.Negative.TC-UI-TF-04
+--suite Tests.UI.Negative.TC-UI-TF-05
+--suite Tests.UI.Positive.TC-UI-AO-01
+--suite Tests.UI.Positive.TC-UI-LGN-01
+--suite Tests.UI.Positive.TC-UI-LGN-06
+--suite Tests.UI.Positive.TC-UI-OA-01
+--suite Tests.UI.Positive.TC-UI-OA-02
+--suite Tests.UI.Positive.TC-UI-REG-01
+--suite Tests.UI.Positive.TC-UI-TF-01
+--suite Tests.UI.Positive.TC-UI-TF-07

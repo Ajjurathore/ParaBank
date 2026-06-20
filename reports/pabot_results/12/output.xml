@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.0 on win32)" generated="2026-06-20T12:59:09.826461" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\azads\OneDrive\Desktop\project\tests">
+<suite id="s1-s1" name="API" source="C:\Users\azads\OneDrive\Desktop\project\tests\API">
+<suite id="s1-s1-s1" name="Positive" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Positive">
+<suite id="s1-s1-s1-s1" name="TC-PERF-02" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Positive\TC-PERF-02.robot">
+<test id="s1-s1-s1-s1-t1" name="TC-PERF-02" line="5">
+<kw name="Get All Accounts Response Time" owner="api_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-20T12:59:10.631970" level="INFO">${start} = 1781940550.631785</msg>
+<var>${start}</var>
+<arg>time.time()</arg>
+<arg>modules=time</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-20T12:59:10.630629" elapsed="0.001443"/>
+</kw>
+<kw name="Login User" owner="api_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-06-20T12:59:10.636688" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-06-20T12:59:10.635660" elapsed="0.001133"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:59:10.640362" level="INFO">Creating Session using : alias=bankApi, url=https://parabank.parasoft.com/parabank/services/bank, headers={'Accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>bankApi</arg>
+<arg>${API_BASE_URL}</arg>
+<arg>verify=True</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-06-20T12:59:10.639531" elapsed="0.001252"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:59:12.677292" level="INFO">GET Request : url=https://parabank.parasoft.com/parabank/services/bank/login/john/demo 
+ path_url=/parabank/services/bank/login/john/demo 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': 'application/json', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-06-20T12:59:12.677657" level="INFO">GET Response : url=https://parabank.parasoft.com/parabank/services/bank/login/john/demo 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 20 Jun 2026 07:29:12 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'cf-cache-status': 'DYNAMIC', 'X-Content-Type-Options': 'nosniff', 'Content-Encoding': 'gzip', 'CF-RAY': 'a0e90fa03d1cff64-BOM'} 
+ body={"id":12212,"firstName":"John","lastName":"Smith","address":{"street":"1431 Main St","city":"Beverly Hills","state":"CA","zipCode":"90210"},"phoneNumber":"310-447-4121","ssn":"622-11-9999"} 
+ </msg>
+<msg time="2026-06-20T12:59:12.678000" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>bankApi</arg>
+<arg>/login/${username_api}/${password_api}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-06-20T12:59:10.643005" elapsed="2.035090"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-06-20T12:59:12.682762" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-20T12:59:12.680802" elapsed="0.002168"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:12.687329" level="INFO">${body} = {'id': 12212, 'firstName': 'John', 'lastName': 'Smith', 'address': {'street': '1431 Main St', 'city': 'Beverly Hills', 'state': 'CA', 'zipCode': '90210'}, 'phoneNumber': '310-447-4121', 'ssn': '622-11...</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-06-20T12:59:12.685588" elapsed="0.001816"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:12.690581" level="INFO">${customerId} = 12212</msg>
+<var>${customerId}</var>
+<arg>${body}[id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-06-20T12:59:12.689757" elapsed="0.000898"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:12.694264" level="INFO">${customerId} = 12212</msg>
+<arg>${customerId}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-06-20T12:59:12.693077" elapsed="0.001362"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Customer ID: ${customerId}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-06-20T12:59:12.696919" elapsed="0.000795"/>
+</kw>
+<tag>@regression @api}</tag>
+<doc>Verify login via REST API</doc>
+<status status="PASS" start="2026-06-20T12:59:10.634834" elapsed="2.063364"/>
+</kw>
+<kw name="Valid Accounts Retrieval" owner="api_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-06-20T12:59:12.700274" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-06-20T12:59:12.699645" elapsed="0.000695"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:59:12.703546" level="INFO">Creating Session using : alias=bankApi, url=https://parabank.parasoft.com/parabank/services/bank, headers={'Accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>bankApi</arg>
+<arg>${API_BASE_URL}</arg>
+<arg>verify=True</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-06-20T12:59:12.702699" elapsed="0.001282"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:59:14.337509" level="INFO">GET Request : url=https://parabank.parasoft.com/parabank/services/bank/customers/12212/accounts 
+ path_url=/parabank/services/bank/customers/12212/accounts 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': 'application/json', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-06-20T12:59:14.337664" level="INFO">GET Response : url=https://parabank.parasoft.com/parabank/services/bank/customers/12212/accounts 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 20 Jun 2026 07:29:14 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'cf-cache-status': 'DYNAMIC', 'X-Content-Type-Options': 'nosniff', 'Content-Encoding': 'gzip', 'CF-RAY': 'a0e90fae29121dbe-BOM'} 
+ body=[{"id":13344,"customerId":12212,"type":"CHECKING","balance":4122.93},{"id":13899,"customerId":12212,"type":"SAVINGS","balance":100.00},{"id":14121,"customerId":12212,"type":"SAVINGS","balance":200.00},{"id":14676,"customerId":12212,"type":"SAVINGS","balance":100.00},{"id":15342,"customerId":12212,"type":"SAVINGS","balance":100.00},{"id":15675,"customerId":12212,"type":"CHECKING","balance":100.00},{"id":19005,"customerId":12212,"type":"CHECKING","balance":100.00},{"id":19116,"customerId":12212,"type":"CHECKING","balance":100.00},{"id":19227,"customerId":12212,"type":"CHECKING","balance":100.00}] 
+ </msg>
+<msg time="2026-06-20T12:59:14.337873" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>bankApi</arg>
+<arg>/customers/${customerId}/accounts</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-06-20T12:59:12.706776" elapsed="1.631152"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-06-20T12:59:14.341695" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.340407" elapsed="0.001429"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:14.345220" level="INFO">${body} = [{'id': 13344, 'customerId': 12212, 'type': 'CHECKING', 'balance': 4122.93}, {'id': 13899, 'customerId': 12212, 'type': 'SAVINGS', 'balance': 100.0}, {'id': 14121, 'customerId': 12212, 'type': 'SAVING...</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.343870" elapsed="0.001416"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:14.347912" level="INFO">${accountId} = 13344</msg>
+<var>${accountId}</var>
+<arg>${body}[0][id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.346937" elapsed="0.001074"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:14.350969" level="INFO">${accountId} = 13344</msg>
+<arg>${accountId}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.350229" elapsed="0.000846"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Account ID: ${accountId}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.353056" elapsed="0.000801"/>
+</kw>
+<tag>@api</tag>
+<tag>@regression</tag>
+<doc>Retrieve accounts using customer ID</doc>
+<status status="PASS" start="2026-06-20T12:59:12.699037" elapsed="1.655177"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-20T12:59:14.355292" level="INFO">${end} = 1781940554.355192</msg>
+<var>${end}</var>
+<arg>time.time()</arg>
+<arg>modules=time</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.354569" elapsed="0.000782"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-20T12:59:14.358080" level="INFO">${responseTimeMs} = 3723.407030105591</msg>
+<var>${responseTimeMs}</var>
+<arg>(${end}-${start})*1000</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.357221" elapsed="0.000928"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response Time: ${responseTimeMs} ms</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.359920" elapsed="0.000731"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${responseTimeMs} &lt; 5000</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-06-20T12:59:14.361039" elapsed="0.000597"/>
+</kw>
+<tag>@api</tag>
+<tag>@performance</tag>
+<doc>Verify login + get accounts completes within 5 seconds</doc>
+<status status="PASS" start="2026-06-20T12:59:10.628329" elapsed="3.733581"/>
+</kw>
+<doc>Verify login + get accounts completes within 5 seconds</doc>
+<tag>@performance @api</tag>
+<status status="PASS" start="2026-06-20T12:59:10.626643" elapsed="3.735636"/>
+</test>
+<status status="PASS" start="2026-06-20T12:59:10.050097" elapsed="4.314010"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:10.047925" elapsed="4.322702"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:10.045593" elapsed="4.326329"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:09.998264" elapsed="4.374822"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">@performance @api</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="API" id="s1-s1" pass="1" fail="0" skip="0">Tests.API</stat>
+<stat name="Positive" id="s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Positive</stat>
+<stat name="TC-PERF-02" id="s1-s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Positive.TC-PERF-02</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

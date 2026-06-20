@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.0 on win32)" generated="2026-06-20T12:59:07.868714" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\azads\OneDrive\Desktop\project\tests">
+<suite id="s1-s1" name="API" source="C:\Users\azads\OneDrive\Desktop\project\tests\API">
+<suite id="s1-s1-s1" name="Positive" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Positive">
+<suite id="s1-s1-s1-s1" name="TC-PERF-01" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Positive\TC-PERF-01.robot">
+<test id="s1-s1-s1-s1-t1" name="TC-PERF-01" line="5">
+<kw name="Login API Response Time" owner="api_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-06-20T12:59:08.656421" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-06-20T12:59:08.655393" elapsed="0.001134"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:59:08.659802" level="INFO">Creating Session using : alias=bankApi, url=https://parabank.parasoft.com/parabank/services/bank, headers={'Accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>bankApi</arg>
+<arg>${API_BASE_URL}</arg>
+<arg>verify=True</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-06-20T12:59:08.659123" elapsed="0.001275"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:59:10.362111" level="INFO">GET Request : url=https://parabank.parasoft.com/parabank/services/bank/login/john/demo 
+ path_url=/parabank/services/bank/login/john/demo 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': 'application/json', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-06-20T12:59:10.362427" level="INFO">GET Response : url=https://parabank.parasoft.com/parabank/services/bank/login/john/demo 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 20 Jun 2026 07:29:10 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'cf-cache-status': 'DYNAMIC', 'X-Content-Type-Options': 'nosniff', 'Content-Encoding': 'gzip', 'CF-RAY': 'a0e90f956a883e45-BOM'} 
+ body={"id":12212,"firstName":"John","lastName":"Smith","address":{"street":"1431 Main St","city":"Beverly Hills","state":"CA","zipCode":"90210"},"phoneNumber":"310-447-4121","ssn":"622-11-9999"} 
+ </msg>
+<msg time="2026-06-20T12:59:10.362929" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>bankApi</arg>
+<arg>/login/${username_api}/${password_api}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-06-20T12:59:08.663332" elapsed="1.699706"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-06-20T12:59:10.367448" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-20T12:59:10.365618" elapsed="0.001978"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:10.371084" level="INFO">${responseTime} = 1.694251</msg>
+<var>${responseTime}</var>
+<arg>${response.elapsed.total_seconds()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-06-20T12:59:10.369679" elapsed="0.001479"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response Time: ${responseTime} seconds</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-06-20T12:59:10.373162" elapsed="0.000791"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${responseTime} &lt; 2</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-06-20T12:59:10.374413" elapsed="0.000795"/>
+</kw>
+<tag>@api</tag>
+<tag>@performance</tag>
+<doc>Verify login API responds within 2 seconds</doc>
+<status status="PASS" start="2026-06-20T12:59:08.654262" elapsed="1.721280"/>
+</kw>
+<doc>Verify login api within 2 sec</doc>
+<tag>@performance @api</tag>
+<status status="PASS" start="2026-06-20T12:59:08.652786" elapsed="1.723116"/>
+</test>
+<status status="PASS" start="2026-06-20T12:59:08.092003" elapsed="2.285313"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:08.090060" elapsed="2.291868"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:08.087769" elapsed="2.295614"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:08.043084" elapsed="2.341395"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">@performance @api</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="API" id="s1-s1" pass="1" fail="0" skip="0">Tests.API</stat>
+<stat name="Positive" id="s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Positive</stat>
+<stat name="TC-PERF-01" id="s1-s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Positive.TC-PERF-01</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

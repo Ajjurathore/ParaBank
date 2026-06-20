@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.0 on win32)" generated="2026-06-20T12:58:51.255595" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\azads\OneDrive\Desktop\project\tests">
+<suite id="s1-s1" name="API" source="C:\Users\azads\OneDrive\Desktop\project\tests\API">
+<suite id="s1-s1-s1" name="Negative" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Negative">
+<suite id="s1-s1-s1-s1" name="TC-API-ACC-07" source="C:\Users\azads\OneDrive\Desktop\project\tests\API\Negative\TC-API-ACC-07.robot">
+<test id="s1-s1-s1-s1-t1" name="TC-API-ACC-07" line="5">
+<kw name="Get Specific Account Details with Invalid Account ID" owner="api_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-06-20T12:58:52.031007" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-06-20T12:58:52.029337" elapsed="0.001820"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:58:52.035394" level="INFO">Creating Session using : alias=bankApi, url=https://parabank.parasoft.com/parabank/services/bank, headers={'Accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>bankApi</arg>
+<arg>${API_BASE_URL}</arg>
+<arg>verify=True</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-06-20T12:58:52.034344" elapsed="0.001706"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-06-20T12:58:54.411854" level="INFO">GET Request : url=https://parabank.parasoft.com/parabank/services/bank/accounts/0000000 
+ path_url=/parabank/services/bank/accounts/0000000 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': 'application/json', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-06-20T12:58:54.412165" level="INFO">GET Response : url=https://parabank.parasoft.com/parabank/services/bank/accounts/0000000 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Sat, 20 Jun 2026 07:28:54 GMT', 'Content-Type': 'text/plain;charset=UTF-8', 'Content-Length': '25', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'cf-cache-status': 'DYNAMIC', 'X-Content-Type-Options': 'nosniff', 'CF-RAY': 'a0e90f2ede6a31b7-BOM'} 
+ body=Could not find account #0 
+ </msg>
+<msg time="2026-06-20T12:58:54.412464" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>bankApi</arg>
+<arg>/accounts/0000000</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-06-20T12:58:52.038786" elapsed="2.373758"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-06-20T12:58:54.414756" elapsed="0.001862"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-06-20T12:58:54.417132" elapsed="0.001895"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-06-20T12:58:54.420768" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-20T12:58:54.419592" elapsed="0.001324"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.text}</arg>
+<arg>Could not find account</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-06-20T12:58:54.423308" elapsed="0.002315"/>
+</kw>
+<tag>@api</tag>
+<tag>@negative</tag>
+<tag>@regression</tag>
+<doc>Retrieve specific account details using invalid account ID</doc>
+<status status="PASS" start="2026-06-20T12:58:52.027248" elapsed="2.398902"/>
+</kw>
+<doc>GEt account with invalid account ID</doc>
+<tag>@api</tag>
+<tag>@negative</tag>
+<status status="PASS" start="2026-06-20T12:58:52.024464" elapsed="2.402060"/>
+</test>
+<status status="PASS" start="2026-06-20T12:58:51.491273" elapsed="2.937038"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:58:51.488821" elapsed="2.944625"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:58:51.485926" elapsed="2.949172"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:58:51.424128" elapsed="3.012046"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">@api</stat>
+<stat pass="1" fail="0" skip="0">@negative</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="API" id="s1-s1" pass="1" fail="0" skip="0">Tests.API</stat>
+<stat name="Negative" id="s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Negative</stat>
+<stat name="TC-API-ACC-07" id="s1-s1-s1-s1" pass="1" fail="0" skip="0">Tests.API.Negative.TC-API-ACC-07</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

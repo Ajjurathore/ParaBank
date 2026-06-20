@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.0 on win32)" generated="2026-06-20T12:59:47.427796" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\azads\OneDrive\Desktop\project\tests">
+<suite id="s1-s1" name="UI" source="C:\Users\azads\OneDrive\Desktop\project\tests\UI">
+<suite id="s1-s1-s1" name="Negative" source="C:\Users\azads\OneDrive\Desktop\project\tests\UI\Negative">
+<suite id="s1-s1-s1-s1" name="TC-UI-REG-02" source="C:\Users\azads\OneDrive\Desktop\project\tests\UI\Negative\TC-UI-REG-02.robot">
+<kw name="Load Environment" owner="common_keywords" type="SETUP">
+<kw name="Load Env" owner="environment">
+<arg>${ENV}</arg>
+<status status="PASS" start="2026-06-20T12:59:48.175382" elapsed="0.002388"/>
+</kw>
+<kw name="Get Env" owner="environment">
+<msg time="2026-06-20T12:59:48.178838" level="INFO">${url} = https://parabank.parasoft.com</msg>
+<var>${url}</var>
+<arg>baseurl</arg>
+<status status="PASS" start="2026-06-20T12:59:48.178413" elapsed="0.000514"/>
+</kw>
+<kw name="Get Env" owner="environment">
+<msg time="2026-06-20T12:59:48.181996" level="INFO">${phone_no} = </msg>
+<var>${phone_no}</var>
+<arg>ph_no</arg>
+<status status="PASS" start="2026-06-20T12:59:48.181406" elapsed="0.000710"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:48.187404" level="INFO">${BASE_URL} = https://parabank.parasoft.com</msg>
+<arg>${BASE_URL}</arg>
+<arg>${url}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2026-06-20T12:59:48.184605" elapsed="0.002979"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2026-06-20T12:59:48.192448" level="INFO">${USER_PHONE} = </msg>
+<arg>${USER_PHONE}</arg>
+<arg>${phone_no}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2026-06-20T12:59:48.190108" elapsed="0.002469"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-20T12:59:48.196003" level="INFO">Loaded BASE_URL=https://parabank.parasoft.com</msg>
+<arg>Loaded BASE_URL=${BASE_URL}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-20T12:59:48.194916" elapsed="0.001302"/>
+</kw>
+<status status="PASS" start="2026-06-20T12:59:48.173609" elapsed="0.025023"/>
+</kw>
+<test id="s1-s1-s1-s1-t1" name="TC-UI-REG-02" line="11">
+<kw name="Open Application" owner="common_keywords" type="SETUP">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-06-20T12:59:48.203196" level="INFO">Length is 29.</msg>
+<arg>${BASE_URL}</arg>
+<arg>Base URL must not be empty. Please set it in config/env.yaml</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-06-20T12:59:48.201819" elapsed="0.001557"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:48.206749" level="INFO">Opening browser 'chrome' to base url 'https://parabank.parasoft.com'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-20T12:59:48.206016" elapsed="4.248576"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-20T12:59:52.457733" elapsed="0.060612"/>
+</kw>
+<doc>Opens the application</doc>
+<status status="PASS" start="2026-06-20T12:59:48.200930" elapsed="4.318092"/>
+</kw>
+<kw name="Incomplete Registration" owner="registerPage">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:52.523444" level="INFO">Clicking element 'xpath=//a[text()="Register"]'.</msg>
+<arg>${register_link}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:52.521702" elapsed="0.612833"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:53.142026" level="INFO">Typing text 'asr' into text field 'id=customer.firstName'.</msg>
+<arg>${first_name}</arg>
+<arg>asr</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:53.139195" elapsed="0.307148"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:53.450444" level="INFO">Typing text 'asr' into text field 'id=customer.lastName'.</msg>
+<arg>${last_name}</arg>
+<arg>asr</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:53.449223" elapsed="0.263894"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:53.718776" level="INFO">Typing text 'jp' into text field 'id=customer.address.city'.</msg>
+<arg>${city}</arg>
+<arg>jp</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:53.717783" elapsed="0.200948"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:53.922675" level="INFO">Typing text 'Raj' into text field 'id=customer.address.state'.</msg>
+<arg>${state}</arg>
+<arg>Raj</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:53.921845" elapsed="0.195481"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:54.120792" level="INFO">Typing text '302013' into text field 'id=customer.address.zipCode'.</msg>
+<arg>${zip_code}</arg>
+<arg>302013</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:54.119989" elapsed="0.227002"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:54.351069" level="INFO">Typing text '9999999999' into text field 'id=customer.phoneNumber'.</msg>
+<arg>${phone}</arg>
+<arg>9999999999</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:54.350235" elapsed="0.191900"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:54.546107" level="INFO">Typing text '123' into text field 'id=customer.ssn'.</msg>
+<arg>${ssn}</arg>
+<arg>123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:54.545280" elapsed="0.179493"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:54.728038" level="INFO">Typing text 'asr' into text field 'id=customer.username'.</msg>
+<arg>${username}</arg>
+<arg>asr</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:54.727236" elapsed="0.223029"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:54.954544" level="INFO">Typing text 'asr' into text field 'id=customer.password'.</msg>
+<arg>${password}</arg>
+<arg>asr</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:54.953655" elapsed="0.195049"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:55.153675" level="INFO">Typing text 'asr' into text field 'id=repeatedPassword'.</msg>
+<arg>${confirm_password}</arg>
+<arg>asr</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:55.152620" elapsed="0.182148"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:55.338441" level="INFO">Clicking element 'xpath=//input[@value='Register']'.</msg>
+<arg>${register_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-20T12:59:55.337669" elapsed="0.522471"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-06-20T12:59:55.925881" level="INFO">Current page does not contain text 'xpath=//a[text()="Log Out"]'.</msg>
+<arg>${logout_btn}</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-06-20T12:59:55.862675" elapsed="0.063502"/>
+</kw>
+<doc>Registering to Para Bank account with incomplete details</doc>
+<status status="PASS" start="2026-06-20T12:59:52.520146" elapsed="3.408651"/>
+</kw>
+<kw name="Close Application" owner="common_keywords" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-06-20T12:59:55.930783" elapsed="6.713360"/>
+</kw>
+<doc>Closing the application</doc>
+<status status="PASS" start="2026-06-20T12:59:55.929791" elapsed="6.715029"/>
+</kw>
+<doc>This test case is to verify the registration functionality of Para Bank application.</doc>
+<status status="PASS" start="2026-06-20T12:59:48.199215" elapsed="14.446002"/>
+</test>
+<status status="PASS" start="2026-06-20T12:59:47.663195" elapsed="14.986577"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:47.660630" elapsed="14.998776"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:47.657662" elapsed="15.003231"/>
+</suite>
+<status status="PASS" start="2026-06-20T12:59:47.605688" elapsed="15.056577"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="UI" id="s1-s1" pass="1" fail="0" skip="0">Tests.UI</stat>
+<stat name="Negative" id="s1-s1-s1" pass="1" fail="0" skip="0">Tests.UI.Negative</stat>
+<stat name="TC-UI-REG-02" id="s1-s1-s1-s1" pass="1" fail="0" skip="0">Tests.UI.Negative.TC-UI-REG-02</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

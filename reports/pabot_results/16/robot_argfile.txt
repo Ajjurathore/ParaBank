@@ -1,0 +1,17 @@
+--suite Tests.Hybrid.TC-E2E-03
+--variable CALLER_ID:db449bf372824afd88ef7e5e178df37f
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:1
+--variable PABOTISLASTEXECUTIONINPOOL:0
+--variable PABOTNUMBEROFPROCESSES:3
+--variable PABOTQUEUEINDEX:16
+--variable PABOTLASTLEVEL:Tests.Hybrid
+--outputdir reports\pabot_results\16
+--listener allure_robotframework
+--output output.xml
+--log NONE
+--report NONE
+--xunit NONE
+--consolecolors off
+--consolemarkers off
+tests/
