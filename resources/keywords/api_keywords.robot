@@ -308,6 +308,51 @@ Invalid Account ID Response Time
     Should Be True    ${responseTimeMs} < 4000
 
 
+Create New Account
+    [Documentation]  Creating a new account from customer id and account id
+    ${headers}=  Create Dictionary  Accept=Application/json
+    Create Session  bank_api  ${API_BASE_URL}  verify=True  headers=${headers}
+    ${payload}=  Create Dictionary
+    ...  customerId=${customer_id}
+    ...  type=1          # type is in integer format
+    ...  fromAccountId=${account_id}
+    ${response}=  POST On Session  bank_api  /createAccount  params=${payload}
+    ${acc_creation_time}=  Evaluate  $response.elapsed.total_seconds()
+    Set Suite Variable    ${acc_creation_time}
+    Should Be Equal As Integers    ${response.status_code}  200
+    ${body}=  Set Variable  ${response.json()}
+#    Log To Console  ${body}
+    ${new_acc_id}=  Set Variable  ${body}[id]
+    ${new_cust_id}=  Set Variable  ${body}[customerId]
+    ${type}=  Set Variable  ${body}[type]
+    Set Suite Variable    ${new_acc_id}
+    Set Suite Variable    ${new_cust_id}
+    Set Suite Variable    ${type}
+
+Transfer funds
+    [Documentation]    Transfering funds from one account to another
+    ${headers}=  Create Dictionary  Accept=Application/json
+    Create Session  bank_api  ${API_BASE_URL}  verify=True  headers=${headers}
+    ${payload}=  Create Dictionary
+    ...  fromAccountId=${account_id}
+    ...  toAccountId=${new_acc_id}
+    ...  amount=100
+    ${response}=  Post On Session  bank_api  /transfer  params=${payload}
+    ${fund_transfer_time}=  Evaluate  $response.elapsed.total_seconds()
+    Set Suite Variable   ${fund_transfer_time}
+    Should Be Equal As Integers    ${response.status_code}  200
+
+Get Account Transactions
+    [Documentation]   Getting all the transactions for an account
+    ${headers}=  Create Dictionary  Accept=Application/json
+    Create Session  bank_api  ${API_BASE_URL}  verify=True  headers=${headers}
+    ${response}=  Get On Session  bank_api  /accounts/${new_acc_id}/transactions
+    ${acc_transac_time}=  Evaluate  $response.elapsed.total_seconds()
+    Set Suite Variable    ${acc_transac_time}
+    Should Be Equal As Integers    ${response.status_code}  200
+    ${body}=  Set Variable  ${response.json()}
+    Log To Console  ${body}
+
 
 #Hybrid
 
